@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Вход</title>
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+</head>
+<body>
+    <div class="centered-block">
+        <div class="cotrearh-form-title">
+            Вход
+        </div>
+        <div class="cotrearh-form">
+            <form method="POST" action="{% url 'login' %}">
+			{% csrf_token %}
+                <div class="cotrearh-form-label">
+                    Имя пользователя
+                </div>
+                <div class="cotrearh-form-input">
+					{{ form.username }}
+                </div>
+                <div class="error-msg">
+                    {{ form.username.errors }}
+                </div>
+                <div class="cotrearh-form-label">
+                    Пароль
+                </div>
+                <div class="cotrearh-form-input">
+					{{ form.password }}
+                </div>
+                <div class="error-msg">
+                    {{ form.password.errors }}
+                </div>
+                <div class="cotrearh-form-btn">
+                    <button type="submit">Войти</button>
+                </div>
+            </form>
+        </div>
+        <a href="{% url 'registration' %}">Регистрация</a>
+    </div>
+</body>
+</html>

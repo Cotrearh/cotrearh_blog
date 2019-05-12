@@ -1,0 +1,80 @@
+{% extends 'blog/index.html' %}
+{% load static %}
+{% block content %}
+
+<div class="themes-wall">
+    <div class="btn-white add-post-btn-small-screen" title="Добавить тему">+</div>
+{% if is_moderator %}
+<div class="theme-block">
+	{% if total_posts %}
+		<form method="POST" action="{% url 'topic_edit' pk=pk %}" enctype="multipart/form-data">
+			{% csrf_token %}
+		    <div class="cotrearh-form-label">
+				Редактирование темы:
+		    </div>
+		    <div class="cotrearh-form-input">
+				{{ form.title }}
+		    </div>
+		    <div class="error-msg">
+		        {{ form.title.errors }}
+		    </div>
+		    <div class="cotrearh-form-label">
+				Изображение:
+		    </div>
+		    <div class="cotrearh-form-input-image">
+				{{ form.image }}
+		    </div>
+		    <div class="error-msg">
+		        {{ form.image.errors }}
+		    </div>
+		    <div class="cotrearh-form-btn">
+		        <button type="submit">Изменить</button>
+		        <a href="{% url 'topics_list' %}">Отменить</a>
+		    </div>
+		    {{ total_posts }}
+		</form>
+	{% else %}
+		<form method="POST" action="{% url 'add_topic' %}"  enctype="multipart/form-data">
+			{% csrf_token %}
+		    <div class="cotrearh-form-label">
+				Быстрое добавление темы:
+		    </div>
+		    <div class="cotrearh-form-input">
+				{{ form.title }}
+		    </div>
+		    <div class="error-msg">
+		        {{ form.title.errors }}
+		    </div>
+		    <div class="cotrearh-form-label">
+				Изображение:
+		    </div>
+		    <div class="cotrearh-form-input-image">
+				{{ form.image }}
+		    </div>
+		    <div class="error-msg">
+		        {{ form.image.errors }}
+		    </div>
+		    <div class="cotrearh-form-btn">
+		        <button type="submit">Добавить</button>
+		    </div>
+		</form>
+    {% endif %}
+</div>
+{% endif %}
+{% for topic in topics %}
+        <div class="theme-block">
+            <div class="theme-img-container">
+                <img src="{{ topic.image_url }}">
+            </div>
+            <div class="theme-name">{{ topic }}</div>
+            <div class="btn-theme total-posts-btn" title="Перейти к публикациям по теме">Всего сатей: {{ topic.post_set.all.count }} >></div>
+        	{% if is_moderator %}
+            <div class="btn-theme-container">
+                <a href="{% url 'topic_edit' pk=topic.pk %}"><div class="btn-theme" title="Редактирование темы">Изменить</div></a>
+                <a href="{% url 'topic_delete' pk=topic.pk %}"><div class="btn-theme" title="Удаление темы">Удалить</div></a>
+            </div>
+        	{% endif %}
+        </div>
+{% endfor %}
+    </div>
+{% endblock %}

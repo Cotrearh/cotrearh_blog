@@ -1,0 +1,18 @@
+{% extends 'blog/index.html' %}
+{% load static %}
+{% block content%}
+<div class="posts-wall">
+    <div class="text-block">
+        <div class="img-container">
+            <img src="{{ post.image_url }}">
+        </div>
+        <div class="post-text-container-big">
+            <div class="post-title">{{ post.title }}</div>
+            <div>Автор: {{ post.author }}, дата: {{ post.published_date }}</div>
+            {% autoescape off %}
+            <div>{{ post.from_markdown }}</div>
+            {% endautoescape %}
+        </div>
+    </div>
+</div>
+{% endblock %}

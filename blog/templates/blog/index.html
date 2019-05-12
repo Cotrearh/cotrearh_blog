@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/cotrearh.css' %}">
+<body>
+<div class="header">
+    <!--<div class="top-bar">-->
+
+    <!--</div>-->
+    <div class="main-title">
+    <a href="{% url 'post_list' %}">
+        Блог обо всём
+    </a>
+    </div>
+    <div class="sub-main-title">
+    	{% if user.is_authenticated %}
+        Вы вошли как
+        <div class="username-dropdown">
+            {{ user }}
+            <div class="username-dropdown-menu">
+                <div> 
+        			<a href="{% url 'logout' %}">Выйти</a>
+        		</div>
+                <div>Личный кабинет</div>
+            </div>
+        </div>
+        {% else %}
+        <a href="{% url 'login_page' %}">Войти</a>
+        {% endif %}
+    </div>
+</div>
+<div class="content">
+    {% block content%}
+    {% endblock %}
+    <div class="nav-bar">
+        <div class="nav-block">
+            <div class="img-container">
+                <img src="{% static 'default_images/default-about-me.jpg' %}">
+            </div>
+            <div class="post-text-container">
+                <div class="post-title">О себе</div>
+                <div>Ну тут я как всегда, не знаю что написать... Но тут должно быть пару слов обо мне...</div>
+            </div>
+            <div class="btn-link btn-white"><a href="{% url 'add_post' %}">Предложить статью</a></div>
+        </div>
+        <div class="nav-block">
+            <div class="menu-header-padded">
+                Поиск
+            </div>
+            <div class="cotrearh-form">
+                <form>
+                    <label>
+                        <input type="text" placeholder="Введите строку для поиска...">
+                    </label>
+                    <button>Поиск</button>
+                    <button>Расширенный поиск</button>
+                </form>
+            </div>
+        </div>
+        <div class="nav-block">
+            <div class="menu-header-padded">
+                Календарь
+            </div>
+        </div>
+        <div class="nav-block">
+            <div class="menu-header">
+	            <a href="{% url 'topics_list' %}">
+	                    Темы
+	            </a>
+            </div>
+            <div class="themes-container">
+                {% for topic in left_menu.top_topics %}
+                <div class="theme" title="{{ topic }}">{{ topic }}</div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="nav-block">
+            <div class="menu-header">
+	            <a href="{% url 'topics_list' %}">
+	                Участники
+	            </a>
+            </div>
+            {% for author in left_menu.top_authors %}
+            <div class="menu-element" title="{{ author }}">{{ author }}</div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<div class="footer">
+
+</div>
+</body>
+</html>

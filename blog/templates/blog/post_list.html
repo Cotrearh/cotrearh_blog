@@ -1,0 +1,26 @@
+{% extends 'blog/index.html' %}
+{% load static %}
+{% block content%}
+{% for p in posts %}
+    <div class="posts-wall">
+    <div class="btn-white add-post-btn-small-screen"><a href="{% url 'add_post' %}">+</a></div>
+        <div class="post">
+            <div class="img-container">
+                <img src="{{ p.image_url }}">
+            </div>
+            <div class="post-text-container">
+                <div class="post-title">{{ p.title }}</div>
+                <div>Автор: {{ p.author }}, дата: {{ p.published_date }}</div>
+            {% autoescape off %}
+            <div>{{ p.text }}</div>
+            {% endautoescape %}
+            </div>
+            <div class="read-more-btn btn-white"><a href="{% url 'read_post' pk=p.pk %}">Читать далее >></a></div>
+        {% if is_moderator %}
+            <div class="edit-post-btn btn-white" title="Редактировать"><a href="{% url 'edit_post' pk=p.pk %}">E</a></div>
+            <div class="delete-post-btn btn-white" title="Удалить"><a href="{% url 'delete_post' pk=p.pk %}">X</a></div>
+        {% endif %}
+        </div>
+    </div>
+{% endfor %}
+{% endblock %}

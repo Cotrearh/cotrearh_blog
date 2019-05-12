@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Регистрация</title>
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+</head>
+<body>
+    <div class="centered-block centered-block-registration">
+        <div class="cotrearh-form-title">
+            Регистрация
+        </div>
+        <div class="cotrearh-form">
+            <form method="POST" action="{% url 'register' %}">
+			{% csrf_token %}
+                <div class="cotrearh-form-label">
+                    Имя пользователя
+                </div>
+                <div class="cotrearh-form-input">
+					{{ form.username }}
+                </div>
+                <div class="error-msg">
+                    {{ form.username.errors }}
+                </div>
+                <div class="cotrearh-form-label">
+                    Пароль
+                </div>
+                <div class="cotrearh-form-input">
+                    {{ form.password }}
+                </div>
+                <div class="error-msg">
+                    {{ form.password.errors }}
+                </div>
+                <div class="cotrearh-form-label">
+                    Подтверждение пароля
+                </div>
+                <div class="cotrearh-form-input">
+                    <label>
+                        <input name="password_confirmation" required type="text">
+                    </label>
+                </div>
+                <div class="cotrearh-form-label">
+                    Электронная почта
+                </div>
+                <div class="cotrearh-form-input">
+                    {{ form.email }}
+                </div>
+                <div class="error-msg">
+                    {{ form.email.errors }}
+                </div>
+                <div class="cotrearh-form-label">
+                    Имя
+                </div>
+                <div class="cotrearh-form-input">
+                    {{ form.first_name }}
+                </div>
+                <div class="cotrearh-form-label">
+                    Фамилия
+                </div>
+                <div class="cotrearh-form-input">
+                    {{ form.last_name }}
+                </div>
+                <div class="cotrearh-form-btn">
+                    <button type="submit">Зарегестрироваться</button>
+                </div>
+            </form>
+        </div>
+        <a href="{% url 'login_page' %}">Вход</a>
+    </div>
+</body>
+</html>

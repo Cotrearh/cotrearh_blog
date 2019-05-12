@@ -1,0 +1,64 @@
+{% extends 'blog/index.html' %}
+{% load static %}
+{% block content%}
+<div class="posts-wall">
+    <div class="form-block">
+        {% if pk %}
+        <form method="POST" action="{% url 'edit_post' pk=pk %}" enctype="multipart/form-data">
+        {% else %}
+        <form method="POST" action="{% url 'add_post' %}" enctype="multipart/form-data">
+        {% endif %}
+            {% csrf_token %}
+            <div class="cotrearh-form-label">
+                Заголовок:
+            </div>
+            <div class="cotrearh-form-input">
+                {{ form.title }}
+            </div>
+            <div class="error-msg">
+                {{ form.title.errors }}
+            </div>
+            <div class="cotrearh-form-label">
+                Текст(поддержка Markdown!):
+            </div>
+            <div class="cotrearh-form-input">
+                {{ form.text }}
+            </div>
+            <div class="error-msg">
+                {{ form.text.errors }}
+            </div>
+            <div class="cotrearh-form-label">
+                Тематики(выберите несколько удерживая Ctrl):
+            </div>
+            <div class="cotrearh-form-input">
+                {{ form.topics }}
+            </div>
+            <div class="error-msg">
+                {{ form.topics.errors }}
+            </div>
+            <div class="cotrearh-form-label">
+                Главное изображение:
+            </div>
+            <div class="cotrearh-form-input">
+                {{ form.image }}
+            </div>
+            <div class="error-msg">
+                {{ form.image.errors }}
+            </div>
+            {% if is_moderator %}
+            <div class="cotrearh-form-checkbox-bar">
+                Опубликовать:
+                {{ form.published }}
+            </div>
+            <div class="error-msg">
+                {{ form.published.errors }}
+            </div>
+            {% endif %}
+            <div class="cotrearh-form-btn">
+                <button type="submit">Сохранить</button>
+                <a href="{% url 'post_list' %}">Отменить</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

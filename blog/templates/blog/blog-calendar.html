@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style type="text/css">
+        .cotrearh-calendar, .cotrearh-calendar-selector select {
+            font-family: "Liberation Serif", sans-serif;
+            font-size: 44px;
+            text-align: center;
+        }
+        .cotrearh-calendar-table {
+            height: 100%;
+            margin-top: 12px;
+            width: 400px;
+        }
+        .cotrearh-calendar-day {
+            background: linear-gradient(to top, #aaaaaa, #ffffff);
+        }
+        .cotrearh-calendar-day-week {
+            font-size: 16px;
+            text-align: center;
+            color: white;
+            background: linear-gradient(to top, #5d5d5d, #a0a0a0);
+        }
+        .red-day {
+            color: white;
+            background: linear-gradient(to top, rgba(255, 0, 0, 0.64), rgba(205, 138, 131, 0.64));
+        }
+        .day-with-publications {
+            color: white;
+            background: linear-gradient(to top, rgba(0, 156, 0, 0.64), rgba(75, 205, 38, 0.64));
+        }
+        .day-with-publications:hover {
+            cursor: pointer;
+            background: linear-gradient(to top, #009c00, #4bcd26);
+        }
+        .day-with-publications a:link {
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            width: 100%;
+        }
+        .current-day, .current-day a:link {
+            color: red;
+            font-weight: bold;
+        }
+        .cotrearh-calendar-selector {
+            float: left;
+            margin: 5px;
+        }
+        .cotrearh-calendar-selector select {
+            /*border: solid 1px grey;*/
+            /*border-radius: 10px;*/
+            /*box-shadow: 0 0 5px black;*/
+        }
+    </style>
+</head>
+<body>
+<div class="cotrearh-calendar">
+    <div class="cotrearh-calendar-selector">
+            <select>
+                <option>Январь</option>
+                <option>Февраль</option>
+                <option>Март</option>
+                <option>Апрель</option>
+                <option>Май</option>
+                <option>Июнь</option>
+                <option>Июль</option>
+                <option>Август</option>
+                <option>Сентябрь</option>
+                <option>Октябрь</option>
+                <option>Ноябрь</option>
+                <option>Декабрь</option>
+            </select>
+    </div>
+    <div class="cotrearh-calendar-selector">
+        <select>
+            <option>2018</option>
+            <option>2017</option>
+            <option>2016</option>
+            <option>2015</option>
+        </select>
+    </div>
+    <br>
+    <div class="cotrearh-calendar-table">
+        <table>
+            <tr class="cotrearh-calendar-row">
+                <td></td>
+                <td class="cotrearh-calendar-day-week">Пн</td>
+                <td class="cotrearh-calendar-day-week">Вт</td>
+                <td class="cotrearh-calendar-day-week">Ср</td>
+                <td class="cotrearh-calendar-day-week">Чт</td>
+                <td class="cotrearh-calendar-day-week">Пт</td>
+                <td class="cotrearh-calendar-day-week">Сб</td>
+                <td class="cotrearh-calendar-day-week">Вс</td>
+            </tr>
+            <tr class="cotrearh-calendar-row">
+                <td class="cotrearh-calendar-day-week">44</td>
+                <td class="cotrearh-calendar-day"></td>
+                <td class="cotrearh-calendar-day"></td>
+                <td class="cotrearh-calendar-day"></td>
+                <td class="cotrearh-calendar-day"></td>
+                <td class="cotrearh-calendar-day"></td>
+                <td class="cotrearh-calendar-day red-day">1</td>
+                <td class="cotrearh-calendar-day red-day">2</td>
+            </tr>
+            <tr class="cotrearh-calendar-row">
+                <td class="cotrearh-calendar-day-week">45</td>
+                <td class="cotrearh-calendar-day">3</td>
+                <td class="cotrearh-calendar-day">4</td>
+                <td class="cotrearh-calendar-day">5</td>
+                <td class="cotrearh-calendar-day">6</td>
+                <td class="cotrearh-calendar-day day-with-publications current-day">
+                    <a href="1">7</a>
+                </td>
+                <td class="cotrearh-calendar-day red-day">8</td>
+                <td class="cotrearh-calendar-day red-day">9</td>
+            </tr>
+            <tr class="cotrearh-calendar-row">
+                <td class="cotrearh-calendar-day-week">46</td>
+                <td class="cotrearh-calendar-day">10</td>
+                <td class="cotrearh-calendar-day">11</td>
+                <td class="cotrearh-calendar-day">12</td>
+                <td class="cotrearh-calendar-day">13</td>
+                <td class="cotrearh-calendar-day">14</td>
+                <td class="cotrearh-calendar-day red-day day-with-publications">
+                    <a href="1">15</a>
+                </td>
+                <td class="cotrearh-calendar-day red-day">16</td>
+            </tr>
+            <tr class="cotrearh-calendar-row">
+                <td class="cotrearh-calendar-day-week">47</td>
+                <td class="cotrearh-calendar-day day-with-publications">
+                    <a href="1">17</a>
+                </td>
+                <td class="cotrearh-calendar-day">18</td>
+                <td class="cotrearh-calendar-day">19</td>
+                <td class="cotrearh-calendar-day">20</td>
+                <td class="cotrearh-calendar-day">21</td>
+                <td class="cotrearh-calendar-day red-day">22</td>
+                <td class="cotrearh-calendar-day red-day">23</td>
+            </tr>
+            <tr class="cotrearh-calendar-row">
+                <td class="cotrearh-calendar-day-week">48</td>
+                <td class="cotrearh-calendar-day">24</td>
+                <td class="cotrearh-calendar-day">25</td>
+                <td class="cotrearh-calendar-day">26</td>
+                <td class="cotrearh-calendar-day">27</td>
+                <td class="cotrearh-calendar-day day-with-publications">
+                    <a href="1">28</a>
+                </td>
+                <td class="cotrearh-calendar-day red-day day-with-publications">
+                    <a href="1">29</a>
+                </td>
+                <td class="cotrearh-calendar-day red-day">30</td>
+            </tr>
+            <tr class="cotrearh-calendar-row">
+                <td class="cotrearh-calendar-day-week">49</td>
+                <td class="cotrearh-calendar-day">31</td>
+                <td class="cotrearh-calendar-day"></td>
+                <td class="cotrearh-calendar-day"></td>
+                <td class="cotrearh-calendar-day"></td>
+                <td class="cotrearh-calendar-day"></td>
+                <td class="cotrearh-calendar-day red-day"></td>
+                <td class="cotrearh-calendar-day red-day"></td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+</body>
+</html>

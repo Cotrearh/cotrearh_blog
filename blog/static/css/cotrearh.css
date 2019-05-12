@@ -1,0 +1,441 @@
+body, html {
+    margin: 0;
+    font-family: Times;
+}
+.header, .footer, .content, .posts-wall, .nav-bar {
+    /*border: 1px solid black;*/
+}
+.header {
+    /*overflow: hidden;*/
+}
+.top-bar {
+    height: 20px;
+    background-color: #1b6d85;
+}
+.content {
+    /*height: 20px;*/
+    overflow: hidden;
+}
+.footer {
+    height: 200px;
+    background-color: #e2e2e2;
+}
+.posts-wall {
+    float: left;
+    width: 70%;
+}
+.nav-bar {
+    overflow: hidden;
+}
+.main-title {
+    margin: auto;
+    padding: 20px;
+    width: 7em;
+    text-align: center;
+    font-size: 48px;
+    font-weight: bolder;
+}
+.main-title a:link, .main-title a:visited {
+    text-decoration: none;
+    color: black;
+}
+.main-title:hover {
+    cursor: pointer;
+}
+.sub-main-title {
+    margin: auto;
+    width: 20em;
+    text-align: center;
+}
+.sub-main-title a:link, .sub-main-title a:visited {
+	text-decoration: none;
+	color: white;
+	background-color: black;
+	padding: 5px;
+	display: block;
+	border: 1px solid black;
+}
+.sub-main-title a:hover {
+	color: black;
+	background-color: white;
+	border: 1px solid black;
+}
+.add-post-btn-small-screen {
+    margin: 30px;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bolder;
+    padding: 0 50px;
+    display: none!important;
+}
+.add-post-btn-big-screen {
+    margin: 30px;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bolder;
+    padding: 50px;
+    display: block!important;
+    float: right;
+}
+@media screen and (max-width: 800px), screen and (max-device-width: 800px){
+    .posts-wall {
+        float: left;
+        width: 100%;
+    }
+    .nav-bar {
+        float: left;
+        width: 100%;
+    }
+    .add-post-btn-small-screen {
+        display: block!important;
+    }
+    .add-post-btn-big-screen {
+        display: none!important;
+    }
+}
+.post{
+    margin: 30px;
+    height: 400px;
+    position: relative;
+    box-shadow: 0 0 10px black;
+}
+.img-container{
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+.img-container img{
+    position: absolute;
+    width: 100%;
+    border: 0px;
+}
+.post-text-container {
+    padding: 10px;
+    max-height: 100px;
+    overflow: hidden;
+}
+.post-text-container-big {
+    padding: 10px;
+}
+.post-title {
+    font-weight: bolder;
+    font-size: 24px;
+}
+.btn-white {
+    border: 1px solid #c8c8c8;
+    display: block;
+    /*padding: 10px;*/
+}
+.btn-white a:link, .btn-white a:visited {
+    display: block;
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+}
+.btn-white:hover {
+    cursor: pointer;
+    background-color: #e9e9e9;
+}
+.read-more-btn {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+.edit-post-btn {
+    position: absolute;
+    bottom: 10px;
+    left: 145px;
+}
+.delete-post-btn {
+    position: absolute;
+    bottom: 10px;
+    left: 180px;
+}
+.nav-block{
+    margin: 30px;
+    box-shadow: 0 0 5px black;
+}
+.menu-header-padded {
+    background-color: #e2e2e2;
+    padding: 15px;
+    font-weight: bold;
+}
+.menu-header {
+    background-color: #e2e2e2;
+    /*padding: 15px;*/
+    font-weight: bold;
+}
+.menu-header:hover {
+    background-color: #a2a2a2;
+}
+.menu-header a:link, .menu-header a:visited {
+	text-decoration: none;
+	color: black;
+	display: block;
+	padding: 15px;
+}
+.menu-element {
+    background-color: white;
+    padding: 15px;
+    border-top: 1px solid grey;
+}
+.menu-element:hover {
+    background-color: #eeeeee;
+    padding: 15px;
+    border-top: 1px solid #b9b9b9;
+    cursor: pointer;
+}
+.themes-container {
+    overflow: hidden;
+}
+.theme {
+    float: left;
+    margin: 5px;
+    background-color: #e9e9e9;
+    padding: 10px;
+}
+.theme:hover {
+    color: white;
+    background-color: #000000;
+    cursor: pointer;
+}
+.cotrearh-form {
+    padding: 10px;
+}
+.cotrearh-form form {
+    width: 100%;
+}
+.cotrearh-form input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px;
+}
+.cotrearh-form label {
+    display: block;
+}
+.cotrearh-form button {
+    /*display: block;*/
+    border: 1px solid #c8c8c8;
+    padding: 10px;
+    background: none;
+    margin-top: 7px;
+}
+.cotrearh-form button:hover {
+    cursor: pointer;
+    background-color: #e9e9e9;
+}
+.username-dropdown, .username-dropdown-menu {
+    border: 1px solid black;
+}
+.username-dropdown{
+    display: inline-block;
+    position: relative;
+    padding: 5px;
+    margin: auto;
+    background-color: white;
+    color: black;
+}
+.username-dropdown:hover {
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+.username-dropdown:hover .username-dropdown-menu{
+    display: block;
+}
+.username-dropdown-menu {
+    background-color: white;
+    color: black;
+    display: none;
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+    left: -1px;
+    top: 100%;
+}
+.username-dropdown-menu div:hover {
+    background-color: #e9e9e9;
+}
+.username-dropdown-menu div {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.username-dropdown-menu div a {
+	background-color: transparent!important;
+	color: black!important;
+	border: none!important;
+}
+.btn-link {
+    display: inline-block;
+    border: 1px solid #c8c8c8;
+    /*padding: 10px;*/
+    margin: 10px;
+    cursor: pointer;
+}
+.btn-link:hover {
+    background-color: #e9e9e9;
+}
+.btn-link a:link, .btn-link a:visited {
+    text-decoration: none;
+    color: black;
+}
+.text-container {
+    padding: 10px;
+}
+.black-theme{
+    float: left;
+    margin: 5px;
+    background-color: #e9e9e9;
+    padding: 10px;
+}
+.black-theme:hover {
+    color: white;
+    background-color: #000000;
+    cursor: pointer;
+}
+
+
+
+.themes-wall {
+    float: left;
+    width: 70%;
+    text-align: center;
+}
+.theme-block {
+    margin: 30px 15px 15px 30px;
+    width: 250px;
+    height: 250px;
+    display: inline-block;
+    background-color: #e9e9e9;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 5px black;
+}
+.theme-block form {
+	margin-top: 20%;
+	display: block;
+}
+.theme-block:hover {
+    transform: scale(1.2);
+}
+.theme-block:hover .btn-theme-container {
+    display: block;
+}
+.theme-block:hover .theme-name {
+    margin: 10px;
+}
+.cotrearh-form-input-image input {
+    display: inline-block;
+    margin: auto;
+    width: 70%;
+}
+.cotrearh-form-input input, .cotrearh-form-input textarea, .cotrearh-form-input select {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+.cotrearh-form-input textarea {
+    max-width: 100%;
+    min-width: 100%;    
+    min-height: 400px;
+}
+.cotrearh-form-input select option {
+    display: inline-block;
+    background-color: #e9e9e9;
+    padding: 5px;
+    margin: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+/*.cotrearh-form-input option:hov {
+    background-color: #000000;
+    /*color: white;*/
+}*/
+.cotrearh-form-checkbox-bar input {
+    display: inline-block;
+    margin-top: 5px;
+}
+.text-block {
+    box-shadow: 0 0 10px black;
+    /*padding: 10px;*/
+    margin: 30px;
+}
+@media screen and (max-device-width: 800px), screen and (max-width: 800px) {
+    .themes-wall {
+        float: left;
+        width: 100%;
+    }
+    .nav-bar {
+        float: left;
+        width: 100%;
+    }
+    .add-post-btn-small-screen {
+        display: block!important;
+    }
+}
+.btn-theme {
+    border: 1px solid black;
+    display: inline-block;
+    padding: 5px;
+    margin: 2px;
+    color: black;
+    background-color: white;
+    cursor: pointer;
+}
+.btn-theme:hover {
+    color: white;
+    background-color: black;
+}
+.total-posts-btn {
+    margin: 7px;
+}
+.btn-theme-container {
+    position: absolute;
+    width: 250px;
+    bottom: 5px;
+    display: none;
+}
+.theme-img-container {
+    height: 50%;
+    overflow: hidden;
+}
+.theme-img-container img {
+    width: 100%;
+}
+.theme-name {
+    margin: 50px;
+    font-weight: bold;
+    font-size: large;
+}
+
+.error-msg {
+	color: red;
+	text-align: left;
+	font-size: small;
+}.error-msg ul {
+	margin: 5px;
+}
+.cotrearh-form-btn button, .cotrearh-form-btn a:link, .cotrearh-form-btn a:visited {
+	border: 1px solid black;
+	display: inline-block;
+	padding: 5px;
+	background-color: white;
+	color: black;
+	text-decoration: none;
+	font-size: 15px;
+	font-family: Times;
+	cursor: pointer;
+	margin: 5px;
+}
+.cotrearh-form-btn button:hover, .cotrearh-form-btn a:hover {
+	background-color: black;
+	color: white;
+}
+
+.form-block {
+    display: block;
+    box-shadow: 0 0 10px black;
+    padding: 10px;
+    margin: 30px;
+}

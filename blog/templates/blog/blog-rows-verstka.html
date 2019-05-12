@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+            body, html {
+                height: 100%;
+                margin: 0;
+                min-width: 660px;
+            }
+            .layout, .header, .side-block, .content-block, .footer-block {
+                /*border: 1px solid black;*/
+                font-family: "Liberation Serif", sans-serif;
+                font-size: large;
+            }
+            .layout {
+                height: auto;
+                min-height: 86vh;
+                overflow: hidden;
+                /*background: radial-gradient(at bottom, #ffffff 50%, #c5c5c5);*/
+            }
+            .header {
+                padding: 2px;
+                height: 7vh;
+                min-height: 41px;
+                border-radius: 10px;
+                background: radial-gradient(at bottom, #ffffff 50%, #c5c5c5);
+                box-shadow: 0 0 10px #0f0f0f;
+            }
+            .side-block {
+                float: left;
+                padding: 10px;
+                width: 11em;
+            }
+            .content-block {
+                padding: 10px;
+                /*margin-left: 340px;*/
+                margin-left: 12em;
+            }
+            .footer-block {
+                padding: 10px;
+                background: radial-gradient(at top, #ffffff 50%, #c5c5c5);
+                box-shadow: 0 0 10px #0f0f0f;
+                text-align: center;
+            }
+            .navigation-block {
+                border: 1px solid black;
+                padding: 10px;
+                border-radius: 10px;
+                margin-top: 10px;
+                background: linear-gradient(to top left, #ffffff 50%, #c5c5c5);
+                color: #000000;
+                box-shadow: 0 0 10px #0f0f0f;
+            }
+            .navigation-block input{
+                width: 100%;
+                border-radius: 5px;
+                border: 1px solid black;
+            }
+            .navigation-block-div{
+                /*position: absolute;*/
+                overflow: hidden;
+            }
+            .navigation-block-div:hover{
+                cursor: pointer;
+                box-shadow: 0 0 10px #0f0f0f;
+                display: block;
+            }
+            .calendar-row {
+                text-align: justify;
+            }
+            .post-block {
+                padding: 10px;
+                border-radius: 10px;
+                margin-top: 10px;
+                /*background-color: cornsilk;*/
+                background: linear-gradient(to top right, #ffffff 50%, #c5c5c5);
+                color: #000000;
+                box-shadow: 0 0 10px #0f0f0f;
+                /*float: left;*/
+                /*width: 45vh;*/
+                /*height: 45vh;*/
+                position: relative;
+                /*margin-left: -120px;*/
+            }
+            .post-block:hover {
+                padding: 10px;
+                border-radius: 10px;
+                margin-top: 10px;
+                /*background-color: cornsilk;*/
+                background: linear-gradient(to top right, #ffffff 12%, #c5c5c5);
+                color: #000000;
+                box-shadow: 0 0 10px #0f0f0f;
+                cursor: pointer;
+                /*position: relative;*/
+                z-index: 7;
+            }
+            .post-preview-text {
+                /*margin-bottom: 20px;*/
+            }
+            .post-themes-block {
+                overflow: hidden;
+                /*position: absolute;*/
+                /*bottom: 10px;*/
+            }
+            .post-theme {
+                border: 1px solid black;
+                padding: 3px;
+                border-radius: 10px;
+                margin: 1px;
+                float: left;
+                background: linear-gradient(to top, #c5c5c5, #ffffff);
+            }
+            .post-theme:hover {
+                box-shadow: 0 0 5px #0f0f0f;
+                background: linear-gradient(to top, #e2e2e2, #ffffff);
+            }
+            .common-btn {
+                border: 1px solid black;
+                background: linear-gradient(to top, #c5c5c5, #ffffff);
+                margin: 2px;
+                border-radius: 5px;
+                padding: 2px;
+            }
+            .common-btn:hover {
+                border: 1px solid black;
+                background: linear-gradient(to top, #c5c5c5, #ffffff);
+                margin: 2px;
+                border-radius: 5px;
+                padding: 2px;
+                box-shadow: 0 0 5px #0f0f0f;
+            }
+            .header-title-item {
+                float: left;
+                height: 100%;
+                margin-left: 12px;
+                margin-right: 12px;
+                font-size: 34px;
+            }
+            .header-title-item {
+                float: left;
+                height: 100%;
+                margin-left: 12px;
+                margin-right: 12px;
+                font-size: 34px;
+            }
+            .header-menu-item {
+                float: left;
+                height: 100%;
+                font-size: 28px;
+            }
+            .dropdown {
+                position: relative;
+                display: inline-block;
+                float: right;
+                height: 100%;
+                font-size: 28px;
+                margin-right: 10px;
+            }
+            .dropdown-child {
+                display: none;
+                position: absolute;
+                right: 0;
+                /*overflow: hidden;*/
+            }
+            .dropdown:hover .dropdown-child{
+                display: block;
+                box-shadow: 0 0 5px #0f0f0f;
+                color: black;
+                background: linear-gradient(to top, #e3e3e3, #bababa);
+                z-index: 7;
+            }
+            .dropdown:hover {
+                background: linear-gradient(to top, rgba(255, 0, 21, 0.29), #ff0011);
+                box-shadow: 0 0 5px #0f0f0f;
+                color: white;
+                cursor: pointer;
+                border-radius: 10px;
+            }
+            .header-menu-item:hover{
+                box-shadow: 0 0 5px #0f0f0f;
+                cursor: pointer;
+                border-radius: 10px;
+            }
+            .centered-table {
+                height: 100%;
+                width: 100%;
+            }
+            .centered-td {
+                text-align: center;
+            }
+            .cotrearh-link-btn:link, .cotrearh-link-btn:visited {
+                text-decoration: none;
+                color: black;
+                padding: 5px;
+                display: inline-block;
+                width: 95%;
+                text-align: center;
+            }
+            .cotrearh-link-btn:hover {
+                background-color: red;
+                color: white;
+            }
+            .to-top-btn {
+                position: fixed;
+                left: 20px;
+                bottom: 50px;
+            }
+            .cotrearh-btn {
+                padding: 10px;
+                border-radius: 20px;
+                font-weight: 900;
+                font-size: large;
+                color: #e2e2e2;
+                box-shadow: 0 0 5px black;
+                cursor: pointer;
+                margin: 2px;
+            }
+            .cotrearh-btn:hover {
+                box-shadow: 0 0 10px black;
+            }
+            .ct-btn-green {
+                background-color: #00a340;
+            }
+            .ct-btn-blue {
+                background-color: #1968fe;
+            }
+            .ct-btn-red {
+                background-color: #da0011;
+            }
+            .ct-btn-yellow {
+                background-color: #dcab00;
+            }
+            .ct-btn-green:hover {
+                background: linear-gradient(to bottom, #00a340, rgb(0, 125, 49));
+            }
+            .ct-btn-blue:hover {
+                background: linear-gradient(to bottom, #1968fe, rgb(22, 80, 203));
+            }
+            .ct-btn-red:hover {
+                background: linear-gradient(to bottom, #da0011, rgb(162, 0, 16));
+            }
+            .ct-btn-yellow:hover {
+                background: linear-gradient(to bottom, #dcab00, rgb(176, 136, 0));
+            }
+            .add-post-btn {
+                margin-left: 30%;
+                margin-right: 30%;
+            }
+            .post-header {
+                overflow: hidden;
+                padding: 10px;
+            }
+            .post-name {
+                float: left;
+                font-size: 30px;
+                font-weight: bold;
+            }
+            .edit-post-btn {
+                float: right;
+            }
+        </style>
+        <style type="text/css">
+            .cotrearh-calendar, .cotrearh-calendar-selector select {
+                font-family: "Liberation Serif", sans-serif;
+                font-size: 15px;
+                text-align: center;
+            }
+            .cotrearh-calendar-table {
+                height: 100%;
+                margin-top: 24px;
+                width: 100%;
+            }
+            .cotrearh-calendar-day {
+                background: linear-gradient(to top, #aaaaaa, #ffffff);
+            }
+            .cotrearh-calendar-day-week {
+                font-size: 15px;
+                text-align: center;
+                color: white;
+                background: linear-gradient(to top, #5d5d5d, #a0a0a0);
+            }
+            .red-day {
+                color: white;
+                background: linear-gradient(to top, rgba(255, 0, 0, 0.64), rgba(205, 138, 131, 0.64));
+            }
+            .day-with-publications {
+                color: white;
+                background: linear-gradient(to top, rgba(0, 156, 0, 0.64), rgba(75, 205, 38, 0.64));
+            }
+            .day-with-publications:hover {
+                cursor: pointer;
+                background: linear-gradient(to top, #009c00, #4bcd26);
+            }
+            .day-with-publications a:link {
+                color: white;
+                text-decoration: none;
+                display: inline-block;
+                width: 100%;
+            }
+            .current-day, .current-day a:link {
+                color: red;
+                font-weight: bold;
+            }
+            .cotrearh-calendar-selector {
+                float: left;
+                margin: 2px;
+            }
+            .cotrearh-calendar-selector select {
+                /*border: solid 1px grey;*/
+                /*border-radius: 10px;*/
+                /*box-shadow: 0 0 5px black;*/
+            }
+        </style>
+    </head>
+    <body>
+        <div class="to-top-btn cotrearh-btn ct-btn-blue">
+            <table class="centered-table">
+                <tr>
+                    <td class="centered-td">
+                        Наверх
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="layout"><div class="header">
+            <div class="header-title-item">
+                <table class="centered-table">
+                    <tr>
+                        <td class="centered-td">
+                            Блог обо всём
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="header-menu-item">
+                <table class="centered-table">
+                    <tr>
+                        <td class="centered-td">
+                            На главную
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="header-menu-item">
+                <table class="centered-table">
+                    <tr>
+                        <td class="centered-td">
+                            Обратная связь
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="dropdown">
+                <table class="centered-table">
+                    <tr>
+                        <td class="centered-td">
+                            Войти
+                        </td>
+                    </tr>
+                </table>
+                <div class="dropdown-child">
+                    <a href="file:///home/denis/blog-rows-login-example.html" class="cotrearh-link-btn">
+                            Вход
+                    </a>
+                    <a href="file:///home/denis/blog-rows-login-example.html" class="cotrearh-link-btn">
+                            Регистрация
+                    </a>
+                </div>
+            </div>
+        </div>
+            <div class="side-block">
+                <div class="navigation-block">
+                    Календарь публикаций
+                    <div class="cotrearh-calendar">
+                        <div class="cotrearh-calendar-selector">
+                            <select>
+                                <option>Январь</option>
+                                <option>Февраль</option>
+                                <option>Март</option>
+                                <option>Апрель</option>
+                                <option>Май</option>
+                                <option>Июнь</option>
+                                <option>Июль</option>
+                                <option>Август</option>
+                                <option>Сентябрь</option>
+                                <option>Октябрь</option>
+                                <option>Ноябрь</option>
+                                <option>Декабрь</option>
+                            </select>
+                        </div>
+                        <div class="cotrearh-calendar-selector">
+                            <select>
+                                <option>2018</option>
+                                <option>2017</option>
+                                <option>2016</option>
+                                <option>2015</option>
+                            </select>
+                        </div>
+                        <br>
+                        <div class="cotrearh-calendar-table">
+                            <table>
+                                <tr class="cotrearh-calendar-row">
+                                    <td></td>
+                                    <td class="cotrearh-calendar-day-week">Пн</td>
+                                    <td class="cotrearh-calendar-day-week">Вт</td>
+                                    <td class="cotrearh-calendar-day-week">Ср</td>
+                                    <td class="cotrearh-calendar-day-week">Чт</td>
+                                    <td class="cotrearh-calendar-day-week">Пт</td>
+                                    <td class="cotrearh-calendar-day-week">Сб</td>
+                                    <td class="cotrearh-calendar-day-week">Вс</td>
+                                </tr>
+                                <tr class="cotrearh-calendar-row">
+                                    <td class="cotrearh-calendar-day-week">44</td>
+                                    <td class="cotrearh-calendar-day"></td>
+                                    <td class="cotrearh-calendar-day"></td>
+                                    <td class="cotrearh-calendar-day"></td>
+                                    <td class="cotrearh-calendar-day"></td>
+                                    <td class="cotrearh-calendar-day"></td>
+                                    <td class="cotrearh-calendar-day red-day">1</td>
+                                    <td class="cotrearh-calendar-day red-day">2</td>
+                                </tr>
+                                <tr class="cotrearh-calendar-row">
+                                    <td class="cotrearh-calendar-day-week">45</td>
+                                    <td class="cotrearh-calendar-day">3</td>
+                                    <td class="cotrearh-calendar-day">4</td>
+                                    <td class="cotrearh-calendar-day">5</td>
+                                    <td class="cotrearh-calendar-day">6</td>
+                                    <td class="cotrearh-calendar-day day-with-publications current-day">
+                                        <a href="1">7</a>
+                                    </td>
+                                    <td class="cotrearh-calendar-day red-day">8</td>
+                                    <td class="cotrearh-calendar-day red-day">9</td>
+                                </tr>
+                                <tr class="cotrearh-calendar-row">
+                                    <td class="cotrearh-calendar-day-week">46</td>
+                                    <td class="cotrearh-calendar-day">10</td>
+                                    <td class="cotrearh-calendar-day">11</td>
+                                    <td class="cotrearh-calendar-day">12</td>
+                                    <td class="cotrearh-calendar-day">13</td>
+                                    <td class="cotrearh-calendar-day">14</td>
+                                    <td class="cotrearh-calendar-day red-day day-with-publications">
+                                        <a href="1">15</a>
+                                    </td>
+                                    <td class="cotrearh-calendar-day red-day">16</td>
+                                </tr>
+                                <tr class="cotrearh-calendar-row">
+                                    <td class="cotrearh-calendar-day-week">47</td>
+                                    <td class="cotrearh-calendar-day day-with-publications">
+                                        <a href="1">17</a>
+                                    </td>
+                                    <td class="cotrearh-calendar-day">18</td>
+                                    <td class="cotrearh-calendar-day">19</td>
+                                    <td class="cotrearh-calendar-day">20</td>
+                                    <td class="cotrearh-calendar-day">21</td>
+                                    <td class="cotrearh-calendar-day red-day">22</td>
+                                    <td class="cotrearh-calendar-day red-day">23</td>
+                                </tr>
+                                <tr class="cotrearh-calendar-row">
+                                    <td class="cotrearh-calendar-day-week">48</td>
+                                    <td class="cotrearh-calendar-day">24</td>
+                                    <td class="cotrearh-calendar-day">25</td>
+                                    <td class="cotrearh-calendar-day">26</td>
+                                    <td class="cotrearh-calendar-day">27</td>
+                                    <td class="cotrearh-calendar-day day-with-publications">
+                                        <a href="1">28</a>
+                                    </td>
+                                    <td class="cotrearh-calendar-day red-day day-with-publications">
+                                        <a href="1">29</a>
+                                    </td>
+                                    <td class="cotrearh-calendar-day red-day">30</td>
+                                </tr>
+                                <tr class="cotrearh-calendar-row">
+                                    <td class="cotrearh-calendar-day-week">49</td>
+                                    <td class="cotrearh-calendar-day">31</td>
+                                    <td class="cotrearh-calendar-day"></td>
+                                    <td class="cotrearh-calendar-day"></td>
+                                    <td class="cotrearh-calendar-day"></td>
+                                    <td class="cotrearh-calendar-day"></td>
+                                    <td class="cotrearh-calendar-day red-day"></td>
+                                    <td class="cotrearh-calendar-day red-day"></td>
+                                </tr>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="navigation-block">
+                    Быстрый поиск:
+                    <form>
+                        <label>
+                            <input type="text" placeholder="Что найти?">
+                        </label>
+                        <button type="submit" class="common-btn">Искать</button>
+                    </form>
+                </div>
+                <div class="navigation-block">
+                    <div>Список тем:</div>
+                    <div class="navigation-block-div" title="Программирование(2)">Программирование(2)</div>
+                    <div class="navigation-block-div" title="Оченьдлинноеназваниетемышопрямвылезаетзапределы(2)">Оченьдлинноеназваниетемышопрямвылезаетзапределы(2)</div>
+                    <div class="navigation-block-div" title="Вёрстка(1)">Вёрстка(1)</div>
+                    <div class="navigation-block-div" title="Warhammer(2)">Warhammer(2)</div>
+                    ...</br>
+                </div>
+                <div class="navigation-block">
+                    Список авторов:</br>
+                    Cotrearh(2)</br>
+                    admin(1)</br>
+                    n@gibb@77oR(2)</br>
+                    ...</br>
+                </div>
+            </div>
+            <div class="content-block">
+                <div class="add-post-btn cotrearh-btn ct-btn-green">
+                    <table class="centered-table">
+                        <tr>
+                            <td class="centered-td">
+                                Добавить публикацию
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="post-block">
+                    <div class="post-header">
+                        <div class="post-name">Заголовок</div>
+                        <div class="edit-post-btn cotrearh-btn ct-btn-red">Delete</div>
+                        <div class="edit-post-btn cotrearh-btn ct-btn-yellow">Edit</div>
+                    </div>
+                    <div class="post-author">Автор: Cotrearh, дата: 16.10.2018</div>
+                    <br>
+                    <div class="post-preview-text">
+                        Здесь начало записи в блоге, обрезанное до определённого количества символов. Я не знаю, что тут написать, поэтому пока так!</br>
+                        А это типа второй абзац. Ну вы поняли...
+                    </div>
+                    <br>
+                    <div class="post-themes-block">
+                        <div class="post-theme">Программирование(2)</div>
+                        <div class="post-theme">Вёрстка(1)</div>
+                        <div class="post-theme">Программирование(2)</div>
+                        <div class="post-theme">Вёрстка(1)</div>
+                        <div class="post-theme">Программирование(2)</div>
+                        <div class="post-theme">Вёрстка(1)</div>
+                        <div class="post-theme">Программирование(2)</div>
+                        <div class="post-theme">Вёрстка(1)</div>
+                        <div class="post-theme">Программирование(2)</div>
+                        <div class="post-theme">Вёрстка(1)</div>
+                        <div class="post-theme">Программирование(2)</div>
+                        <div class="post-theme">Вёрстка(1)</div>
+                        <div class="post-theme">Программирование(2)</div>
+                        <div class="post-theme">Вёрстка(1)</div>
+                        <div class="post-theme">Программирование(2)</div>
+                        <div class="post-theme">Вёрстка(1)</div>
+                        <div class="post-theme">Программирование(2)</div>
+                        <div class="post-theme">Вёрстка(1)</div>
+                        <div class="post-theme">Программирование(2)</div>
+                        <div class="post-theme">Вёрстка(1)</div>
+                        <div class="post-theme">Программирование(2)</div>
+                        <div class="post-theme">Вёрстка(1)</div>
+                        <div class="post-theme">Программирование(2)</div>
+                        <div class="post-theme">Вёрстка(1)</div>
+                    </div>
+                </div>
+                <div class="post-block">
+                    <div class="post-header">
+                        <div class="post-name">Заголовок</div>
+                        <div class="edit-post-btn cotrearh-btn ct-btn-red">Delete</div>
+                        <div class="edit-post-btn cotrearh-btn ct-btn-yellow">Edit</div>
+                    </div>
+                    <div>Автор: Cotrearh, дата: 16.10.2018</div>
+                    <br>
+                    <div>
+                        Здесь начало записи в блоге, обрезанное до определённого количества символов. Я не знаю, что тут написать, поэтому пока так!</br>
+                        А это типа второй абзац. Ну вы поняли...
+                    </div>
+                    <br>
+                    <div class="post-themes-block">
+                        <div class="post-theme">Warhammer(2)</div>
+                    </div>
+                </div>
+                <div class="post-block">
+                    <div class="post-header">
+                        <div class="post-name">Заголовок</div>
+                        <div class="edit-post-btn cotrearh-btn ct-btn-red">Delete</div>
+                        <div class="edit-post-btn cotrearh-btn ct-btn-yellow">Edit</div>
+                    </div>
+                    <div>Автор: Cotrearh, дата: 16.10.2018</div>
+                    <br>
+                    <div>
+                        Здесь начало записи в блоге, обрезанное до определённого количества символов. Я не знаю, что тут написать, поэтому пока так!</br>
+                        А это типа второй абзац. Ну вы поняли...
+                    </div>
+                    <br>
+                    <div class="post-themes-block">
+                        <div class="post-theme">Программирование(2)</div>
+                    </div>
+                </div>
+                <div class="post-block">
+                    <div class="post-header">
+                        <div class="post-name">Заголовок</div>
+                        <div class="edit-post-btn cotrearh-btn ct-btn-red">Delete</div>
+                        <div class="edit-post-btn cotrearh-btn ct-btn-yellow">Edit</div>
+                    </div>
+                    <div>Автор: Cotrearh, дата: 16.10.2018</div>
+                    <br>
+                    <div>
+                        Здесь начало записи в блоге, обрезанное до определённого количества символов. Я не знаю, что тут написать, поэтому пока так!</br>
+                        А это типа второй абзац. Ну вы поняли...
+                    </div>
+                    <br>
+                    <div class="post-themes-block">
+                        <div class="post-theme">Программирование(2)</div>
+                    </div>
+                </div>
+                <div class="post-block">
+                    <div class="post-header">
+                        <div class="post-name">Заголовок</div>
+                        <div class="edit-post-btn cotrearh-btn ct-btn-red">Delete</div>
+                        <div class="edit-post-btn cotrearh-btn ct-btn-yellow">Edit</div>
+                    </div>
+                    <div>Автор: Cotrearh, дата: 16.10.2018</div>
+                    <br>
+                    <div class="post-preview-text">
+                        Здесь начало записи в блоге, обрезанное до определённого количества символов. Я не знаю, что тут написать, поэтому пока так!</br>
+                        А это типа второй абзац. Ну вы поняли...
+                        Много текстаМного текстаМного текста Много текста Много текста Много текста Много текста Много текста
+                        Много текста Много текста Много текста Много текста Много текста Много текста Много текста Много текста
+                        Много текста Много текста Много текста Много текста Много текста Много текста Много текста Много текста
+                        Много текста Много текста Много текста Много текста Много текста Много текста Много текста Много текста
+                        Много текста Много текста Много текста Много текста Много текста Много текста Много текста Много текста
+                        Много текста Много текста Много текста Много текста Много текста Много текста Много текста Много текста
+                        Много текстаМного текстаМного текста Много текста Много текста Много текста Много текста Много текста
+                        Много текста Много текста Много текста Много текста Много текста Много текста Много текста Много текста
+                        Много текста Много текста Много текста Много текста Много текста Много текста Много текста Много текста
+                        Много текста Много текста Много текста Много текста Много текста Много текста Много текста Много текста
+                        Много текста Много текста Много текста Много текста Много текста Много текста Много текста Много текста
+                        Много текста Много текста Много текста Много текста Много текста Много текста Много текста Много текста
+                        Много текстаМного текстаМного текста Много текста Много текста Много текста Много текста Много текста
+                        Много текста Много текста Много текста Много текста Много текста Много текста Много текста Много текста
+                        Много текста Много текста Много текста Много текста Много текста Много текста Много текста Много текста
+                        Много текста Много текста Много текста Много текста Много текста Много текста Много текста Много текста
+                        Много текста Много текста Много текста Много текста Много текста Много текста Много текста Много текста
+                        Много текста Много текста Много текста Много текста Много текста Много текста Много текста Много текста
+                    </div>
+                    <br>
+                    <div class="post-themes-block">
+                        <div class="post-theme">Программирование(2)</div>
+                    </div>
+                </div>
+                <div class="post-block">
+                    <div class="post-header">
+                        <div class="post-name">Заголовок</div>
+                        <div class="edit-post-btn cotrearh-btn ct-btn-red">Delete</div>
+                        <div class="edit-post-btn cotrearh-btn ct-btn-yellow">Edit</div>
+                    </div>
+                    <div>Автор: Cotrearh, дата: 16.10.2018</div>
+                    <br>
+                    <div>
+                        Здесь начало записи в блоге, обрезанное до определённого количества символов. Я не знаю, что тут написать, поэтому пока так!</br>
+                        А это типа второй абзац. Ну вы поняли...
+                    </div>
+                    <br>
+                    <div class="post-themes-block">
+                        <div class="post-theme">Программирование(2)</div>
+                    </div>
+                </div>
+                <div class="post-block">
+                    <div class="post-header">
+                        <div class="post-name">Заголовок</div>
+                        <div class="edit-post-btn cotrearh-btn ct-btn-red">Delete</div>
+                        <div class="edit-post-btn cotrearh-btn ct-btn-yellow">Edit</div>
+                    </div>
+                    <div>Автор: Cotrearh, дата: 16.10.2018</div>
+                    <br>
+                    <div>
+                        Здесь начало записи в блоге, обрезанное до определённого количества символов. Я не знаю, что тут написать, поэтому пока так!</br>
+                        А это типа второй абзац. Ну вы поняли...
+                    </div>
+                    <br>
+                    <div class="post-themes-block">
+                        <div class="post-theme">Программирование(2)</div>
+                    </div>
+                </div>
+                <div class="post-block">
+                    <div class="post-header">
+                        <div class="post-name">Заголовок</div>
+                        <div class="edit-post-btn cotrearh-btn ct-btn-red">Delete</div>
+                        <div class="edit-post-btn cotrearh-btn ct-btn-yellow">Edit</div>
+                    </div>
+                    <div>Автор: Cotrearh, дата: 16.10.2018</div>
+                    <br>
+                    <div>
+                        Здесь начало записи в блоге, обрезанное до определённого количества символов. Я не знаю, что тут написать, поэтому пока так!</br>
+                        А это типа второй абзац. Ну вы поняли...
+                    </div>
+                    <br>
+                    <div class="post-themes-block">
+                        <div class="post-theme">Программирование(2)</div>
+                    </div>
+                </div>
+                <div class="post-block">
+                    <div class="post-header">
+                        <div class="post-name">Заголовок</div>
+                        <div class="edit-post-btn cotrearh-btn ct-btn-red">Delete</div>
+                        <div class="edit-post-btn cotrearh-btn ct-btn-yellow">Edit</div>
+                    </div>
+                    <div>Автор: Cotrearh, дата: 16.10.2018</div>
+                    <br>
+                    <div>
+                        Здесь начало записи в блоге, обрезанное до определённого количества символов. Я не знаю, что тут написать, поэтому пока так!</br>
+                        А это типа второй абзац. Ну вы поняли...
+                    </div>
+                    <br>
+                    <div class="post-themes-block">
+                        <div class="post-theme">Программирование(2)</div>
+                    </div>
+                </div>
+                <div class="post-block">
+                    <div class="post-header">
+                        <div class="post-name">Заголовок</div>
+                        <div class="edit-post-btn cotrearh-btn ct-btn-red">Delete</div>
+                        <div class="edit-post-btn cotrearh-btn ct-btn-yellow">Edit</div>
+                    </div>
+                    <div>Автор: Cotrearh, дата: 16.10.2018</div>
+                    <br>
+                    <div>
+                        Здесь начало записи в блоге, обрезанное до определённого количества символов. Я не знаю, что тут написать, поэтому пока так!</br>
+                        А это типа второй абзац. Ну вы поняли...
+                    </div>
+                    <br>
+                    <div class="post-themes-block">
+                        <div class="post-theme">Программирование(2)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-block">Москва, 2018г</div>
+    </body>
+</html>

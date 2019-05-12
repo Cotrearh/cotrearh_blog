@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+            body, html {
+                height: 100%;
+                margin: 0;
+                min-width: 660px;
+            }
+            .layout, .header, .side-block, .content-block, .footer-block {
+                /*border: 1px solid black;*/
+                font-family: "Liberation Serif", sans-serif;
+                font-size: large;
+            }
+            .layout {
+                height: auto;
+                min-height: 86vh;
+                overflow: hidden;
+                /*background: radial-gradient(at bottom, #ffffff 50%, #c5c5c5);*/
+            }
+            .header {
+                padding: 2px;
+                height: 7vh;
+                min-height: 41px;
+                border-radius: 10px;
+                background: radial-gradient(at bottom, #ffffff 50%, #c5c5c5);
+                box-shadow: 0 0 10px #0f0f0f;
+            }
+            .side-block {
+                float: left;
+                padding: 10px;
+                width: 11em;
+            }
+            .content-block {
+                padding-top: 10px;
+                /*margin-left: 340px;*/
+                margin-left: 12em;
+            }
+            .footer-block {
+                padding: 10px;
+                background: radial-gradient(at top, #ffffff 50%, #c5c5c5);
+                box-shadow: 0 0 10px #0f0f0f;
+            }
+            .navigation-block {
+                border: 1px solid black;
+                padding: 10px;
+                border-radius: 10px;
+                margin-top: 10px;
+                background: linear-gradient(to top left, #ffffff 50%, #c5c5c5);
+                color: #000000;
+                box-shadow: 0 0 10px #0f0f0f;
+            }
+            .navigation-block input{
+                width: 100%;
+                border-radius: 5px;
+                border: 1px solid black;
+            }
+            .navigation-block-div{
+                /*position: absolute;*/
+                overflow: hidden;
+            }
+            .navigation-block-div:hover{
+                cursor: pointer;
+                box-shadow: 0 0 10px #0f0f0f;
+                display: block;
+            }
+            .calendar-row {
+                text-align: justify;
+            }
+            .post-block {
+                padding: 10px;
+                border-radius: 10px;
+                margin-top: 10px;
+                /*background-color: cornsilk;*/
+                background: linear-gradient(to top right, #ffffff 50%, #c5c5c5);
+                color: #000000;
+                box-shadow: 0 0 10px #0f0f0f;
+                float: left;
+                width: 300px;
+                height: 300px;
+                min-height: 300px;
+                min-width: 200px;
+                position: relative;
+                /*margin-left: -120px;*/
+            }
+            .post-block:hover {
+                background: linear-gradient(to top right, #ffffff 12%, #c5c5c5);
+                color: #000000;
+                box-shadow: 0 0 10px #0f0f0f;
+                cursor: pointer;
+                z-index: 7;
+            }
+            .post-preview-text {
+                max-height: 32%;
+                overflow: hidden;
+                /*position: absolute;*/
+                /*bottom: 100px;*/
+            }
+            .post-themes-block {
+                max-height: 15%;
+                min-height: 37px;
+                overflow: hidden;
+                position: absolute;
+                bottom: 10px;
+            }
+            .post-themes-block:hover {
+                overflow-y: auto;
+            }
+            .post-theme {
+                border: 1px solid black;
+                padding: 3px;
+                border-radius: 10px;
+                margin: 1px;
+                float: left;
+                background: linear-gradient(to top, #c5c5c5, #ffffff);
+            }
+            .post-theme:hover {
+                box-shadow: 0 0 5px #0f0f0f;
+                background: linear-gradient(to top, #e2e2e2, #ffffff);
+            }
+            .common-btn {
+                border: 1px solid black;
+                background: linear-gradient(to top, #c5c5c5, #ffffff);
+                margin: 2px;
+                border-radius: 5px;
+                padding: 2px;
+            }
+            .common-btn:hover {
+                border: 1px solid black;
+                background: linear-gradient(to top, #c5c5c5, #ffffff);
+                margin: 2px;
+                border-radius: 5px;
+                padding: 2px;
+                box-shadow: 0 0 5px #0f0f0f;
+            }
+            .header-title-item {
+                float: left;
+                height: 100%;
+                margin-left: 12px;
+                margin-right: 12px;
+                font-size: 34px;
+            }
+            .header-title-item {
+                float: left;
+                height: 100%;
+                margin-left: 12px;
+                margin-right: 12px;
+                font-size: 34px;
+            }
+            .header-menu-item {
+                float: left;
+                height: 100%;
+                font-size: 28px;
+            }
+            .dropdown {
+                position: relative;
+                display: inline-block;
+                float: right;
+                height: 100%;
+                font-size: 28px;
+            }
+            .dropdown-child {
+                display: none;
+                position: absolute;
+                right: 0;
+            }
+            .dropdown:hover .dropdown-child{
+                display: block;
+                box-shadow: 0 0 5px #0f0f0f;
+                color: black;
+                background: linear-gradient(to top, #e3e3e3, #bababa);
+                padding: 5px;
+                z-index: 7;
+            }
+            .dropdown:hover {
+                background: linear-gradient(to top, rgba(255, 0, 21, 0.29), #ff0011);
+                box-shadow: 0 0 5px #0f0f0f;
+                color: white;
+                cursor: pointer;
+                border-radius: 10px;
+            }
+            .header-menu-item:hover{
+                box-shadow: 0 0 5px #0f0f0f;
+                cursor: pointer;
+                border-radius: 10px;
+            }
+            .header-menu-item table, .dropdown table, .header-title-item table{
+                height: 100%
+            }
+            .header-menu-item td, .dropdown td, .header-title-item td{
+                text-align: center;
+            }
+            .dropdown-child-item {
+                width: 100%;
+                margin: 5px;
+            }
+            .dropdown-child-item:hover {
+                cursor: pointer;
+                background: linear-gradient(to top, #989898, #989898);
+            }
+            .to-top-btn {
+                position: fixed;
+                bottom: 45px;
+                right: 10px;
+                z-index: 8
+            }
+        </style>
+    </head>
+    <body>
+        <!--<div class="to-top-btn">-->
+            <!--/\-->
+        <!--</div>-->
+        <div class="layout"><div class="header">
+            <div class="header-title-item">
+                <table>
+                    <tr>
+                        <td>
+                            Блог обо всём
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="header-menu-item">
+                <table>
+                    <tr>
+                        <td>
+                            На главную
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="header-menu-item">
+                <table>
+                    <tr>
+                        <td>
+                            Обратная связь
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="dropdown">
+                <table>
+                    <tr>
+                        <td>
+                            Войти
+                        </td>
+                    </tr>
+                </table>
+                <div class="dropdown-child">
+                    <a class="dropdown-child-item">Вход</a>
+                    <br>
+                    <a class="dropdown-child-item">Регистрация</a>
+                </div>
+            </div>
+        </div>
+            <div class="side-block">
+                <div class="navigation-block">
+                    Календарь публикаций
+                    <div class="calendar-row">< MONTH >
+                        <br>
+                        1 2 3 4 5 6 7
+                        8 9 10 11 12 13 14
+                        15 1 6 17 18 19 20 21
+                        22 23 24 25 26 27 28
+                        29 30 31
+                        <br>
+                        < YEAR ></div>
+                </div>
+                <div class="navigation-block">
+                    Быстрый поиск:
+                    <form>
+                        <label>
+                            <input type="text" placeholder="Что найти?">
+                        </label>
+                        <button type="submit" class="common-btn">Искать</button>
+                    </form>
+                </div>
+                <div class="navigation-block">
+                    <div>Список тем:</div>
+                    <div class="navigation-block-div" title="Программирование(2)">Программирование(2)</div>
+                    <div class="navigation-block-div" title="Оченьдлинноеназваниетемышопрямвылезаетзапределы(2)">Оченьдлинноеназваниетемышопрямвылезаетзапределы(2)</div>
+                    <div class="navigation-block-div" title="Вёрстка(1)">Вёрстка(1)</div>
+                    <div class="navigation-block-div" title="Warhammer(2)">Warhammer(2)</div>
+                    ...</br>
+                </div>
+                <div class="navigation-block">
+                    Список авторов:</br>
+                    Cotrearh(2)</br>
+                    admin(1)</br>
+                    n@gibb@77oR(2)</br>
+                    ...</br>
+                </div>
+            </div>
+            <div class="content-block">
+                <div class="post-block">
+                    <h3>Заголовок</h3>
+                    <div class="post-author">Автор: Cotrearh, дата: 16.10.2018</div>
+                    <br>
+                    <div class="post-preview-text">
+                        Здесь начало записи в блоге, обрезанное до определённого количества символов. Я не знаю, что тут написать, поэтому пока так!</br>
+                        А это типа второй абзац. Ну вы поняли...
+                    </div>
+                    <br>
+                    <div class="post-themes-block">
+                        <div class="post-theme">Программирование(2)</div>
+                        <div class="post-theme">Вёрстка(1)</div>
+                        <div class="post-theme">Программирование(2)</div>
+                        <div class="post-theme">Вёрстка(1)</div>
+                        <div class="post-theme">Программирование(2)</div>
+                        <div class="post-theme">Вёрстка(1)</div>
+                        <div class="post-theme">Программирование(2)</div>
+                        <div class="post-theme">Вёрстка(1)</div>
+                        <div class="post-theme">Программирование(2)</div>
+                        <div class="post-theme">Вёрстка(1)</div>
+                        <div class="post-theme">Программирование(2)</div>
+                        <div class="post-theme">Вёрстка(1)</div>
+                        <div class="post-theme">Программирование(2)</div>
+                        <div class="post-theme">Вёрстка(1)</div>
+                        <div class="post-theme">Программирование(2)</div>
+                        <div class="post-theme">Вёрстка(1)</div>
+                        <div class="post-theme">Программирование(2)</div>
+                        <div class="post-theme">Вёрстка(1)</div>
+                        <div class="post-theme">Программирование(2)</div>
+                        <div class="post-theme">Вёрстка(1)</div>
+                        <div class="post-theme">Программирование(2)</div>
+                        <div class="post-theme">Вёрстка(1)</div>
+                        <div class="post-theme">Программирование(2)</div>
+                        <div class="post-theme">Вёрстка(1)</div>
+                    </div>
+                </div>
+                <div class="post-block">
+                    <h3>Заголовок</h3>
+                    <div>Автор: Cotrearh, дата: 16.10.2018</div>
+                    <br>
+                    <div class="post-preview-text">
+                        Здесь начало записи в блоге, обрезанное до определённого количества символов. Я не знаю, что тут написать, поэтому пока так!</br>
+                        А это типа второй абзац. Ну вы поняли...
+                    </div>
+                    <br>
+                    <div class="post-themes-block">
+                        <div class="post-theme">Warhammer(2)</div>
+                    </div>
+                </div>
+                <div class="post-block">
+                    <h3>Заголовок</h3>
+                    <div>Автор: Cotrearh, дата: 16.10.2018</div>
+                    <br>
+                    <div class="post-preview-text">
+                        Здесь начало записи в блоге, обрезанное до определённого количества символов. Я не знаю, что тут написать, поэтому пока так!</br>
+                        А это типа второй абзац. Ну вы поняли...
+                    </div>
+                    <br>
+                    <div class="post-themes-block">
+                        <div class="post-theme">Программирование(2)</div>
+                    </div>
+                </div>
+                <div class="post-block">
+                    <h3>Заголовок</h3>
+                    <div>Автор: Cotrearh, дата: 16.10.2018</div>
+                    <br>
+                    <div class="post-preview-text">
+                        Здесь начало записи в блоге, обрезанное до определённого количества символов. Я не знаю, что тут написать, поэтому пока так!</br>
+                        А это типа второй абзац. Ну вы поняли...
+                    </div>
+                    <br>
+                    <div class="post-themes-block">
+                        <div class="post-theme">Программирование(2)</div>
+                    </div>
+                </div>
+                <div class="post-block">
+                    <h3>Заголовок</h3>
+                    <div>Автор: Cotrearh, дата: 16.10.2018</div>
+                    <br>
+                    <div class="post-preview-text">
+                        Здесь начало записи в блоге, обрезанное до определённого количества символов. Я не знаю, что тут написать, поэтому пока так!</br>
+                        А это типа второй абзац. Ну вы поняли...
+                        Много текстаМного текстаМного текста Много текста Много текста Много текста Много текста Много текста
+                        Много текста Много текста Много текста Много текста Много текста Много текста Много текста Много текста
+                        Много текста Много текста Много текста Много текста Много текста Много текста Много текста Много текста
+                        Много текста Много текста Много текста Много текста Много текста Много текста Много текста Много текста
+                        Много текста Много текста Много текста Много текста Много текста Много текста Много текста Много текста
+                        Много текста Много текста Много текста Много текста Много текста Много текста Много текста Много текста
+                        Много текстаМного текстаМного текста Много текста Много текста Много текста Много текста Много текста
+                        Много текста Много текста Много текста Много текста Много текста Много текста Много текста Много текста
+                        Много текста Много текста Много текста Много текста Много текста Много текста Много текста Много текста
+                        Много текста Много текста Много текста Много текста Много текста Много текста Много текста Много текста
+                        Много текста Много текста Много текста Много текста Много текста Много текста Много текста Много текста
+                        Много текста Много текста Много текста Много текста Много текста Много текста Много текста Много текста
+                        Много текстаМного текстаМного текста Много текста Много текста Много текста Много текста Много текста
+                        Много текста Много текста Много текста Много текста Много текста Много текста Много текста Много текста
+                        Много текста Много текста Много текста Много текста Много текста Много текста Много текста Много текста
+                        Много текста Много текста Много текста Много текста Много текста Много текста Много текста Много текста
+                        Много текста Много текста Много текста Много текста Много текста Много текста Много текста Много текста
+                        Много текста Много текста Много текста Много текста Много текста Много текста Много текста Много текста
+                    </div>
+                    <br>
+                    <div class="post-themes-block">
+                        <div class="post-theme">Программирование(2)</div>
+                    </div>
+                </div>
+                <div class="post-block">
+                    <h3>Заголовок</h3>
+                    <div>Автор: Cotrearh, дата: 16.10.2018</div>
+                    <br>
+                    <div class="post-preview-text">
+                        Здесь начало записи в блоге, обрезанное до определённого количества символов. Я не знаю, что тут написать, поэтому пока так!</br>
+                        А это типа второй абзац. Ну вы поняли...
+                    </div>
+                    <br>
+                    <div class="post-themes-block">
+                        <div class="post-theme">Программирование(2)</div>
+                    </div>
+                </div>
+                <div class="post-block">
+                    <h3>Заголовок</h3>
+                    <div>Автор: Cotrearh, дата: 16.10.2018</div>
+                    <br>
+                    <div class="post-preview-text">
+                        Здесь начало записи в блоге, обрезанное до определённого количества символов. Я не знаю, что тут написать, поэтому пока так!</br>
+                        А это типа второй абзац. Ну вы поняли...
+                    </div>
+                    <br>
+                    <div class="post-themes-block">
+                        <div class="post-theme">Программирование(2)</div>
+                    </div>
+                </div>
+                <div class="post-block">
+                    <h3>Заголовок</h3>
+                    <div>Автор: Cotrearh, дата: 16.10.2018</div>
+                    <br>
+                    <div class="post-preview-text">
+                        Здесь начало записи в блоге, обрезанное до определённого количества символов. Я не знаю, что тут написать, поэтому пока так!</br>
+                        А это типа второй абзац. Ну вы поняли...
+                    </div>
+                    <br>
+                    <div class="post-themes-block">
+                        <div class="post-theme">Программирование(2)</div>
+                    </div>
+                </div>
+                <div class="post-block">
+                    <h3>Заголовок</h3>
+                    <div>Автор: Cotrearh, дата: 16.10.2018</div>
+                    <br>
+                    <div class="post-preview-text">
+                        Здесь начало записи в блоге, обрезанное до определённого количества символов. Я не знаю, что тут написать, поэтому пока так!</br>
+                        А это типа второй абзац. Ну вы поняли...
+                    </div>
+                    <br>
+                    <div class="post-themes-block">
+                        <div class="post-theme">Программирование(2)</div>
+                    </div>
+                </div>
+                <div class="post-block">
+                    <h3>Заголовок</h3>
+                    <div>Автор: Cotrearh, дата: 16.10.2018</div>
+                    <br>
+                    <div class="post-preview-text">
+                        Здесь начало записи в блоге, обрезанное до определённого количества символов. Я не знаю, что тут написать, поэтому пока так!</br>
+                        А это типа второй абзац. Ну вы поняли...
+                    </div>
+                    <br>
+                    <div class="post-themes-block">
+                        <div class="post-theme">Программирование(2)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-block">Контакты: -</div>
+    </body>
+</html>
